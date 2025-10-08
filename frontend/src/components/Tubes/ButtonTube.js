@@ -99,9 +99,9 @@ export default function ButtonTube({ className = "" }) {
     transition: .5s background-color;
     font-size: ${fontSize}rem;
     border-radius: ${borderRadius}px;
-    background-color: ${backgroundColor};
-    color: ${textColor};
-    border: ${borderWidth}px ${borderType} ${textColor};
+    background-color: transparent; /* ${backgroundColor} */
+    color: var(--btn-color); /* ${textColor} */
+    border: ${borderWidth}px ${borderType} var(--btn-color); /* ${textColor} */
     letter-spacing: ${letterSpacing}px;
     padding-left: ${horizontalPadding}px;
     padding-right: ${horizontalPadding}px;
@@ -113,8 +113,9 @@ export default function ButtonTube({ className = "" }) {
   }
 
   .btn:hover, .btn.active {
-    background-color: ${hoverBg};
-    color: ${hoverText};
+    background-color: var(--btn-color); /* ${hoverBg} */
+    color: var(--btn-hover-txt); /* ${hoverText} */
+    border-color: transparent;
   }
   `;
 

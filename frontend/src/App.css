@@ -20,17 +20,26 @@ body {
 }
 
 .btn {
-  background-color: transparent;
-  color: var(--btn-color);
-  border-color: var(--btn-color);
+  transition: 0.5s background-color;
+  font-size: 0.875rem;
+  border-radius: 0px;
+  background-color: transparent; /* transparent */
+  color: var(--btn-color); /* #a80000 */
+  border-bottom: 0.5px solid var(--btn-color); /* #a80000 */
   letter-spacing: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-transform: unset;
+  font-style: italic;
+  font-weight: unset;
 }
 
 .btn:hover,
-.btn.active,
-.dropdown-item:hover {
-  background-color: var(--btn-color);
-  color: var(--btn-hover-txt);
+.btn.active {
+  background-color: var(--btn-color); /* #c13e3e */
+  color: var(--btn-hover-txt); /* #cccccc */
   border-color: transparent;
 }
 
