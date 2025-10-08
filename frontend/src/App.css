@@ -142,10 +142,6 @@ a:hover {
   display: flex;
 }
 
-body {
-  margin-top: 75px;
-}
-
 .between {
   display: flex;
   justify-content: space-between;

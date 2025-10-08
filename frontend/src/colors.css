@@ -11,7 +11,7 @@ html[data-theme="light"] {
   --blue: #6464f1;
   --purple: #844784;
 
-  --btn-color: #693b69;
+  --btn-color: #5735a7;
   --btn-hover-txt: #cccccc;
 }
 
@@ -27,6 +27,6 @@ html[data-theme="dark"] {
   --blue: #5a5af7;
   --purple: #864286;
 
-  --btn-color: #ae73ae;
+  --btn-color: #b7a3ff;
   --btn-hover-txt: #1a1a1a;
 }

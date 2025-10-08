@@ -7,6 +7,7 @@ export default function Context({ children }) {
   const [loading, setLoading] = useState(false);
 
   const [things, setThings] = useState([]);
+  const [tab, setTab] = useState("button");
 
   const addThing = (e, name) => {
     e.preventDefault();
@@ -52,6 +53,9 @@ export default function Context({ children }) {
     getThings: getThings,
     editThing: editThing,
     deleteThing: deleteThing,
+
+    tab: tab,
+    setTab: setTab,
   };
 
   return (
