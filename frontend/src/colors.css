@@ -11,8 +11,9 @@ html[data-theme="light"] {
   --blue: #6464f1;
   --purple: #844784;
 
-  --btn-color: #5735a7;
-  --btn-hover-txt: #cccccc;
+  --btn-color: #652caa;
+  --btn-hover-bg: #110094;
+  --btn-hover-txt: #b8b8b8;
 }
 
 html[data-theme="dark"] {
@@ -27,6 +28,7 @@ html[data-theme="dark"] {
   --blue: #5a5af7;
   --purple: #864286;
 
-  --btn-color: #b7a3ff;
-  --btn-hover-txt: #1a1a1a;
+  --btn-color: #9c75cc;
+  --btn-hover-bg: #5275a3;
+  --btn-hover-txt: #171717;
 }

@@ -20,27 +20,26 @@ body {
 }
 
 .btn {
-  transition: 0.5s background-color;
   font-size: 0.875rem;
   border-radius: 0px;
-  background-color: transparent; /* transparent */
-  color: var(--btn-color); /* #a80000 */
-  border-bottom: 0.5px solid var(--btn-color); /* #a80000 */
+  background-color: transparent;
+  color: var(--btn-color);
+  border-bottom: 0.5px solid var(--btn-color);
   letter-spacing: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-left: 13px;
+  padding-right: 13px;
+  line-height: 1.5;
   text-transform: unset;
-  font-style: italic;
+  font-style: unset;
   font-weight: unset;
 }
 
 .btn:hover,
 .btn.active {
-  background-color: var(--btn-color); /* #c13e3e */
-  color: var(--btn-hover-txt); /* #cccccc */
+  background-color: var(--btn-hover-bg);
+  color: var(--btn-hover-txt);
   border-color: transparent;
+  border-radius: 5px;
 }
 
 .form-control,
@@ -154,4 +153,13 @@ a:hover {
 .between {
   display: flex;
   justify-content: space-between;
+}
+
+::-webkit-slider-thumb {
+  background-color: var(--btn-color) !important;
+}
+
+::-webkit-slider-runnable-track {
+  border: 0.5px solid var(--btn-color) !important;
+  background-color: transparent !important;
 }

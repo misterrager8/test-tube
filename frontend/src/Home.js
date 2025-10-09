@@ -8,6 +8,7 @@ import ButtonTube from "./components/Tubes/ButtonTube";
 import Button from "./components/Button";
 import { MultiContext } from "./Context";
 import CardTube from "./components/Tubes/CardTube";
+import TextTube from "./components/Tubes/TextTube";
 
 export default function Home() {
   const [theme, setTheme] = useState(
@@ -24,21 +25,20 @@ export default function Home() {
   return (
     <div className="">
       <div className="p-3">
-        <div className="between">
+        <div className="between mb-2">
           <div className="between">
             <Button border={false} icon="beaker" />
             <div className="ms-2">
               <Button
+                className="me-1"
                 active={multiCtx.tab === "button"}
-                border={false}
                 onClick={() => multiCtx.setTab("button")}
                 text="Button"
               />
               <Button
-                active={multiCtx.tab === "card"}
-                border={false}
-                onClick={() => multiCtx.setTab("card")}
-                text="Card"
+                active={multiCtx.tab === "text"}
+                onClick={() => multiCtx.setTab("text")}
+                text="Text"
               />
             </div>
           </div>
@@ -50,7 +50,7 @@ export default function Home() {
             />
           </div>
         </div>
-        {multiCtx.tab === "button" ? <ButtonTube /> : <CardTube />}
+        {multiCtx.tab === "button" ? <ButtonTube /> : <TextTube />}
       </div>
     </div>
   );

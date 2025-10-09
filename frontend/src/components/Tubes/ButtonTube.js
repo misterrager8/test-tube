@@ -8,8 +8,8 @@ export default function ButtonTube({ className = "" }) {
   const [borderWidth, setBorderWidth] = useState(0.5);
   const onChangeBorderWidth = (e) => setBorderWidth(e.target.value);
 
-  const [verticalPadding, setVerticalPadding] = useState(1);
-  const onChangeVerticalPadding = (e) => setVerticalPadding(e.target.value);
+  const [lineHeight, setLineHeight] = useState(1);
+  const onChangeLineHeight = (e) => setLineHeight(e.target.value);
 
   const [horizontalPadding, setHorizontalPadding] = useState(20);
   const onChangeHorizontalPadding = (e) => setHorizontalPadding(e.target.value);
@@ -17,13 +17,13 @@ export default function ButtonTube({ className = "" }) {
   const [backgroundColor, setBackgroundColor] = useState("transparent");
   const onChangeBackgroundColor = (e) => setBackgroundColor(e.target.value);
 
-  const [textColor, setTextColor] = useState("gray");
+  const [textColor, setTextColor] = useState("#4f7bc2");
   const onChangeTextColor = (e) => setTextColor(e.target.value);
 
-  const [hoverBg, setHoverBg] = useState("gray");
-  const onChangeHoverColor = (e) => setHoverBg(e.target.value);
+  const [hoverBg, setHoverBg] = useState("#4f7bc2");
+  const onChangeHoverBg = (e) => setHoverBg(e.target.value);
 
-  const [hoverText, setHoverText] = useState("#cccccc");
+  const [hoverText, setHoverText] = useState("#c3cfe2");
   const onChangeHoverText = (e) => setHoverText(e.target.value);
 
   const [borderType, setBorderType] = useState("solid");
@@ -38,7 +38,6 @@ export default function ButtonTube({ className = "" }) {
   const [italicized, setItalicized] = useState(false);
   const [bold, setBold] = useState(false);
 
-  const [hovered, setHovered] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const copyStyle = () => {
@@ -49,17 +48,17 @@ export default function ButtonTube({ className = "" }) {
 
   const resetAll = () => {
     setBorderRadius(5);
-    setVerticalPadding(1);
+    setLineHeight(1);
     setHorizontalPadding(20);
     setBackgroundColor("transparent");
-    setTextColor("gray");
+    setTextColor("#4f7bc2");
     setLetterSpacing(1);
     setCapitalize(false);
     setItalicized(false);
     setFontSize(0.875);
     setBorderWidth(0.5);
-    setHoverBg("gray");
-    setHoverText("#cccccc");
+    setHoverBg("#4f7bc2");
+    setHoverText("#c3cfe2");
     setBorderType("solid");
     setBold(false);
   };
@@ -78,43 +77,43 @@ export default function ButtonTube({ className = "" }) {
   ];
 
   const style = {
-    transition: ".5s background-color",
     fontSize: `${fontSize}rem`,
     borderRadius: `${borderRadius}px`,
-    backgroundColor: hovered ? hoverBg : backgroundColor,
-    color: hovered ? hoverText : textColor,
+    backgroundColor: backgroundColor,
+    color: textColor,
     border: `${borderWidth}px ${borderType} ${textColor}`,
     letterSpacing: `${letterSpacing}px`,
     paddingLeft: `${horizontalPadding}px`,
     paddingRight: `${horizontalPadding}px`,
-    paddingTop: `${verticalPadding}px`,
-    paddingBottom: `${verticalPadding}px`,
+    lineHeight: lineHeight,
     textTransform: capitalize ? "uppercase" : "unset",
     fontStyle: italicized ? "italic" : null,
     fontWeight: bold ? "bold" : null,
   };
 
   const style2 = `
+  /* --btn-color: ${textColor};
+  --btn-hover-bg: ${hoverBg};
+  --btn-hover-txt: ${hoverText}; */
+
   .btn {
-    transition: .5s background-color;
     font-size: ${fontSize}rem;
     border-radius: ${borderRadius}px;
-    background-color: transparent; /* ${backgroundColor} */
-    color: var(--btn-color); /* ${textColor} */
-    border: ${borderWidth}px ${borderType} var(--btn-color); /* ${textColor} */
+    background-color: transparent;
+    color: var(--btn-color);
+    border: ${borderWidth}px ${borderType} var(--btn-color);
     letter-spacing: ${letterSpacing}px;
     padding-left: ${horizontalPadding}px;
     padding-right: ${horizontalPadding}px;
-    padding-top: ${verticalPadding}px;
-    padding-bottom: ${verticalPadding}px;
+    line-height: ${lineHeight};
     text-transform: ${capitalize ? "uppercase" : "unset"};
     font-style: ${italicized ? "italic" : "unset"};
     font-weight: ${bold ? "bold" : "unset"};
   }
 
   .btn:hover, .btn.active {
-    background-color: var(--btn-color); /* ${hoverBg} */
-    color: var(--btn-hover-txt); /* ${hoverText} */
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-hover-txt);
     border-color: transparent;
   }
   `;
@@ -123,25 +122,25 @@ export default function ButtonTube({ className = "" }) {
     <div className={className + " row m-0"} style={{ height: "90vh" }}>
       <div className="col-4 d-flex">
         <div className="m-auto w-100">
-          <div className="btn-group">
+          <div className="d-flex mb-4">
             <Button
               onClick={() => setCapitalize(!capitalize)}
-              className={capitalize ? "active" : ""}
+              className={"me-1 " + (capitalize ? "active" : "")}
               text="All Caps"
             />
             <Button
               onClick={() => setItalicized(!italicized)}
-              className={italicized ? " active" : ""}
+              className={"me-1 " + (italicized ? " active" : "")}
               text="Italic"
             />
             <Button
               onClick={() => setBold(!bold)}
-              className={bold ? " active" : ""}
+              className={"me-1 " + (bold ? " active" : "")}
               text="Bold"
             />
           </div>
 
-          <div className="my-3">
+          <div className="mb-2">
             <div className="between small">
               <div>Font Size</div>
               <div className="me-3">{fontSize} rem</div>
@@ -159,7 +158,7 @@ export default function ButtonTube({ className = "" }) {
             </div>
           </div>
 
-          <div className="my-3">
+          <div className="my-2">
             <div className="between small">
               <div>Letter Spacing</div>
               <div className="me-3">{letterSpacing} px</div>
@@ -177,7 +176,7 @@ export default function ButtonTube({ className = "" }) {
             </div>
           </div>
 
-          <div className="my-3">
+          <div className="my-2">
             <div className="between small">
               <div>Horizontal Padding</div>
               <div className="me-3">{horizontalPadding} px</div>
@@ -185,7 +184,7 @@ export default function ButtonTube({ className = "" }) {
             <div className="d-flex">
               <input
                 max={100}
-                min={20}
+                min={0}
                 onChange={onChangeHorizontalPadding}
                 value={horizontalPadding}
                 className="form-range"
@@ -194,24 +193,25 @@ export default function ButtonTube({ className = "" }) {
             </div>
           </div>
 
-          <div className="my-3">
+          <div className="my-2">
             <div className="between small">
-              <div>Vertical Padding</div>
-              <div className="me-3">{verticalPadding} px</div>
+              <div>Line Height</div>
+              <div className="me-3">{lineHeight}</div>
             </div>
             <div className="d-flex">
               <input
                 max={15}
                 min={1}
-                onChange={onChangeVerticalPadding}
-                value={verticalPadding}
+                step={0.5}
+                onChange={onChangeLineHeight}
+                value={lineHeight}
                 className="form-range"
                 type="range"
               />
             </div>
           </div>
 
-          <div className="my-3">
+          <div className="my-2">
             <div className="between small">
               <div>Border Radius</div>
               <div className="me-3">{borderRadius} px</div>
@@ -228,7 +228,7 @@ export default function ButtonTube({ className = "" }) {
             </div>
           </div>
 
-          <div className="my-3">
+          <div className="my-2">
             <div className="between small">
               <div>Border Width</div>
               <div className="me-3">{borderWidth} px</div>
@@ -257,66 +257,60 @@ export default function ButtonTube({ className = "" }) {
             ))}
           </div>
 
-          <div className="between">
-            <div className="small mb-2 p-2">
-              <div>Normal</div>
-              <div className="between my-2">
-                <div className="my-auto">BG</div>
-                <div className="d-flex">
-                  <div className="text-uppercase me-3 small my-auto">
-                    {backgroundColor}
-                  </div>
-                  <input
-                    onChange={onChangeBackgroundColor}
-                    value={backgroundColor}
-                    className="form-control form-control-sm form-control-color"
-                    type="color"
-                  />
-                </div>
+          <div className="small my-3">
+            <div className="row mb-2">
+              <div className="col-1"></div>
+              <div className="col">
+                <div className="px-5 text-custom">Normal</div>
               </div>
-
-              <div className="between my-2">
-                <div className="my-auto">Text</div>
-                <div className="d-flex">
-                  <div className="text-uppercase me-3 small my-auto">
-                    {textColor}
-                  </div>
-                  <input
-                    onChange={onChangeTextColor}
-                    value={textColor}
-                    className="form-control form-control-sm form-control-color"
-                    type="color"
-                  />
-                </div>
+              <div className="col">
+                <div className="px-5 text-custom">Hover</div>
               </div>
             </div>
-            <div className="small mb-2 p-2">
-              <div>Hover </div>
-              <div className="between my-2">
-                <div className="d-flex">
-                  <div className="text-uppercase me-3 small my-auto">
-                    {backgroundColor}
-                  </div>
-                  <input
-                    onChange={onChangeHoverColor}
-                    value={hoverBg}
-                    className="form-control form-control-sm form-control-color"
-                    type="color"
-                  />
-                </div>
+            <div className="row">
+              <div className="col-1 d-flex">
+                <div className="my-auto text-custom">Fill</div>
               </div>
-              <div className="between my-2">
-                <div className="d-flex">
-                  <div className="text-uppercase me-3 small my-auto">
-                    {hoverText}
-                  </div>
-                  <input
-                    onChange={onChangeHoverText}
-                    value={hoverText}
-                    className="form-control form-control-sm form-control-color"
-                    type="color"
-                  />
-                </div>
+              <div className="col d-flex">
+                <input
+                  onChange={onChangeBackgroundColor}
+                  value={backgroundColor}
+                  className="form-control form-control-sm form-control-color m-2"
+                  type="color"
+                />
+                <div className="my-auto text-uppercase">{backgroundColor}</div>
+              </div>
+              <div className="col d-flex">
+                <input
+                  onChange={onChangeHoverBg}
+                  value={hoverBg}
+                  className="form-control form-control-sm form-control-color m-2"
+                  type="color"
+                />
+                <div className="my-auto text-uppercase">{hoverBg}</div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-1 d-flex">
+                <div className="my-auto text-custom">Font</div>
+              </div>
+              <div className="col d-flex">
+                <input
+                  onChange={onChangeTextColor}
+                  value={textColor}
+                  className="form-control form-control-sm form-control-color m-2"
+                  type="color"
+                />
+                <div className="my-auto text-uppercase">{textColor}</div>
+              </div>
+              <div className="col d-flex">
+                <input
+                  onChange={onChangeHoverText}
+                  value={hoverText}
+                  className="form-control form-control-sm form-control-color m-2"
+                  type="color"
+                />
+                <div className="my-auto text-uppercase">{hoverText}</div>
               </div>
             </div>
           </div>
@@ -325,12 +319,19 @@ export default function ButtonTube({ className = "" }) {
         </div>
       </div>
       <div className="col-4 d-flex">
-        <div className="m-auto">
-          <button
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            style={style}>
+        <div className="m-auto" style={{ zoom: "2" }}>
+          <button className="m-1" style={style}>
             Button
+          </button>
+          <button
+            className="m-1"
+            style={{
+              ...style,
+              backgroundColor: hoverBg,
+              color: hoverText,
+              border: `${borderWidth}px ${borderType} ${backgroundColor}`,
+            }}>
+            Hover
           </button>
         </div>
       </div>
@@ -339,12 +340,12 @@ export default function ButtonTube({ className = "" }) {
           <div className="between">
             <Button
               onClick={() => copyStyle()}
-              icon={copied ? "check-lg" : "clipboard"}
+              icon={copied ? "check-lg" : "copy"}
               text="Copy"
             />
           </div>
           <div
-            className="mt-4 font-monospace small"
+            className="mt-2 font-monospace small"
             style={{ whiteSpace: "pre-wrap" }}>
             {style2}
           </div>
