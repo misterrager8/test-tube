@@ -32,19 +32,6 @@ export default function TextTube({ className = "" }) {
     setBold(false);
   };
 
-  const borderStyles = [
-    "solid",
-    "dotted",
-    "dashed",
-    "double",
-    "groove",
-    "ridge",
-    "inset",
-    "outset",
-    "none",
-    "hidden",
-  ];
-
   const style = {
     fontSize: `${fontSize}rem`,
     color: textColor,

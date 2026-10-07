@@ -24,13 +24,16 @@ body {
   border-radius: 0px;
   background-color: transparent;
   color: var(--btn-color);
+  border-top: none;
   border-bottom: 0.5px solid var(--btn-color);
+  border-left: none;
+  border-right: none;
   letter-spacing: 2px;
   padding-left: 13px;
   padding-right: 13px;
   line-height: 1.5;
   text-transform: unset;
-  font-style: unset;
+  font-style: italic;
   font-weight: unset;
 }
 

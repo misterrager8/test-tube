@@ -11,9 +11,9 @@ html[data-theme="light"] {
   --blue: #6464f1;
   --purple: #844784;
 
-  --btn-color: #652caa;
-  --btn-hover-bg: #110094;
-  --btn-hover-txt: #b8b8b8;
+  --btn-color: #744997;
+  --btn-hover-bg: #734ab0;
+  --btn-hover-txt: #d6d6d6;
 }
 
 html[data-theme="dark"] {
@@ -28,7 +28,7 @@ html[data-theme="dark"] {
   --blue: #5a5af7;
   --purple: #864286;
 
-  --btn-color: #9c75cc;
-  --btn-hover-bg: #5275a3;
-  --btn-hover-txt: #171717;
+  --btn-color: #9159c0;
+  --btn-hover-bg: #8760c3;
+  --btn-hover-txt: #0d0d0d;
 }

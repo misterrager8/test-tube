@@ -28,6 +28,11 @@ export default function ButtonTube({ className = "" }) {
 
   const [borderType, setBorderType] = useState("solid");
 
+  const [borderTop, setBorderTop] = useState(true);
+  const [borderBottom, setBorderBottom] = useState(true);
+  const [borderLeft, setBorderLeft] = useState(true);
+  const [borderRight, setBorderRight] = useState(true);
+
   const [letterSpacing, setLetterSpacing] = useState(1);
   const onChangeLetterSpacing = (e) => setLetterSpacing(e.target.value);
 
@@ -61,6 +66,11 @@ export default function ButtonTube({ className = "" }) {
     setHoverText("#c3cfe2");
     setBorderType("solid");
     setBold(false);
+
+    setBorderTop(true);
+    setBorderBottom(true);
+    setBorderLeft(true);
+    setBorderRight(true);
   };
 
   const borderStyles = [
@@ -72,8 +82,6 @@ export default function ButtonTube({ className = "" }) {
     "ridge",
     "inset",
     "outset",
-    "none",
-    "hidden",
   ];
 
   const style = {
@@ -81,7 +89,18 @@ export default function ButtonTube({ className = "" }) {
     borderRadius: `${borderRadius}px`,
     backgroundColor: backgroundColor,
     color: textColor,
-    border: `${borderWidth}px ${borderType} ${textColor}`,
+    borderTop: borderTop
+      ? `${borderWidth}px ${borderType} ${textColor}`
+      : "none",
+    borderBottom: borderBottom
+      ? `${borderWidth}px ${borderType} ${textColor}`
+      : "none",
+    borderLeft: borderLeft
+      ? `${borderWidth}px ${borderType} ${textColor}`
+      : "none",
+    borderRight: borderRight
+      ? `${borderWidth}px ${borderType} ${textColor}`
+      : "none",
     letterSpacing: `${letterSpacing}px`,
     paddingLeft: `${horizontalPadding}px`,
     paddingRight: `${horizontalPadding}px`,
@@ -92,16 +111,29 @@ export default function ButtonTube({ className = "" }) {
   };
 
   const style2 = `
-  /* --btn-color: ${textColor};
+  /*
+  --btn-color: ${textColor};
   --btn-hover-bg: ${hoverBg};
-  --btn-hover-txt: ${hoverText}; */
+  --btn-hover-txt: ${hoverText};
+  */
 
   .btn {
     font-size: ${fontSize}rem;
     border-radius: ${borderRadius}px;
     background-color: transparent;
     color: var(--btn-color);
-    border: ${borderWidth}px ${borderType} var(--btn-color);
+    border-top: ${
+      borderTop ? `${borderWidth}px ${borderType} var(--btn-color)` : "none"
+    };
+    border-bottom: ${
+      borderBottom ? `${borderWidth}px ${borderType} var(--btn-color)` : "none"
+    };
+    border-left: ${
+      borderLeft ? `${borderWidth}px ${borderType} var(--btn-color)` : "none"
+    };
+    border-right: ${
+      borderRight ? `${borderWidth}px ${borderType} var(--btn-color)` : "none"
+    };
     letter-spacing: ${letterSpacing}px;
     padding-left: ${horizontalPadding}px;
     padding-right: ${horizontalPadding}px;
@@ -244,6 +276,33 @@ export default function ButtonTube({ className = "" }) {
                 type="range"
               />
             </div>
+          </div>
+
+          <div className="mb-2">
+            <Button
+              className="m-1"
+              active={borderTop}
+              onClick={() => setBorderTop(!borderTop)}
+              text="Top"
+            />
+            <Button
+              className="m-1"
+              active={borderBottom}
+              onClick={() => setBorderBottom(!borderBottom)}
+              text="Bottom"
+            />
+            <Button
+              className="m-1"
+              active={borderLeft}
+              onClick={() => setBorderLeft(!borderLeft)}
+              text="Left"
+            />
+            <Button
+              className="m-1"
+              active={borderRight}
+              onClick={() => setBorderRight(!borderRight)}
+              text="Right"
+            />
           </div>
 
           <div className="mb-2" style={{ flexWrap: "wrap" }}>

@@ -9,6 +9,8 @@ import Button from "./components/Button";
 import { MultiContext } from "./Context";
 import CardTube from "./components/Tubes/CardTube";
 import TextTube from "./components/Tubes/TextTube";
+import InputTube from "./components/Tubes/InputTube";
+import NavTube from "./components/Tubes/NavTube";
 
 export default function Home() {
   const [theme, setTheme] = useState(
@@ -27,7 +29,7 @@ export default function Home() {
       <div className="p-3">
         <div className="between mb-2">
           <div className="between">
-            <Button border={false} icon="beaker" />
+            <Button border={false} icon="flask" />
             <div className="ms-2">
               <Button
                 className="me-1"
@@ -36,9 +38,26 @@ export default function Home() {
                 text="Button"
               />
               <Button
+                className="me-1"
                 active={multiCtx.tab === "text"}
                 onClick={() => multiCtx.setTab("text")}
                 text="Text"
+              />
+              <Button
+                className="me-1"
+                active={multiCtx.tab === "input"}
+                onClick={() => multiCtx.setTab("input")}
+                text="Input"
+              />
+              <Button
+                active={multiCtx.tab === "card"}
+                onClick={() => multiCtx.setTab("card")}
+                text="Card"
+              />
+              <Button
+                active={multiCtx.tab === "nav"}
+                onClick={() => multiCtx.setTab("nav")}
+                text="Nav"
               />
             </div>
           </div>
@@ -50,7 +69,17 @@ export default function Home() {
             />
           </div>
         </div>
-        {multiCtx.tab === "button" ? <ButtonTube /> : <TextTube />}
+        {multiCtx.tab === "button" ? (
+          <ButtonTube />
+        ) : multiCtx.tab === "card" ? (
+          <CardTube />
+        ) : multiCtx.tab === "input" ? (
+          <InputTube />
+        ) : multiCtx.tab === "nav" ? (
+          <NavTube />
+        ) : (
+          <TextTube />
+        )}
       </div>
     </div>
   );
