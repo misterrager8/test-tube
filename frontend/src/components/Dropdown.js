@@ -8,6 +8,7 @@ export default function Dropdown({
   classNameMenu = "",
   className = "",
   showCaret = true,
+  menuStyle = null,
 }) {
   return (
     <div className={className}>
@@ -23,7 +24,10 @@ export default function Dropdown({
         {icon && <i className={"me-2 bi bi-" + icon}></i>}
         {text}
       </a>
-      <div id={target} className={classNameMenu + " dropdown-menu"}>
+      <div
+        style={menuStyle}
+        id={target}
+        className={classNameMenu + " dropdown-menu"}>
         {children}
       </div>
     </div>
